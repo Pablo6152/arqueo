@@ -1,56 +1,75 @@
-const bill500 = document.getElementById("500")
-const bill200 = document.getElementById("200")
-const bill100 = document.getElementById("100")
-const bill50 = document.getElementById("50")
-const bill20 = document.getElementById("20")
-const bill10 = document.getElementById("10")
-const bill5 = document.getElementById("5")
-const bill2 = document.getElementById("2")
-const bill1 = document.getElementById("1")
-const documents = document.getElementById("documents")
+const actionAdd = document.getElementById("action-add")
+const backBtn = document.getElementById("back-btn")
+const doneBtn = document.getElementById("done-btn")
 
-const  testDebug = document.getElementById("test")
-testDebug.addEventListener("click", () => {
-    console.log(total)
-})
+const paymentContainer = document.getElementById("payment-container")
+const addContainer = document.getElementById("add-container")
+const addItem = document.getElementById("add-item")
+const addItemInput = document.getElementById("add-item-input")
 
-
-
+let payments = []
 let total = 0
 
-bill500.addEventListener("keypress", () => {
+actionAdd.addEventListener("click", () => {
+    console.log("add")
+    addContainer.classList.add("show")
+    addContainer.classList.remove("hide")
+})
 
+backBtn.addEventListener("click", () => {
+    console.log("back")
+    addContainer.classList.add("hide")
+    addContainer.classList.remove("show")
+})
+
+doneBtn.addEventListener("click", () => {
+    console.log()
+
+    payments.push(
+        {
+            amount: Number(addItemInput.value),
+            id: payments.length
+        }
+    )
+
+    // console.log(payments)
+
+    const itemsDisplay = payments
+
+    let appData = ""
+
+    for (let i = 0; i < itemsDisplay.length; i++) {
+        appData += `
+        <div class="item-container">
+            <button id="edit" class="item-btn edit-btn">
+                <span class="material-symbols-outlined item-btn-icon">
+                    edit
+                    </span>
+            </button>
+
+            <div class="amount-container">
+                <span class="material-symbols-outlined amount-icon">
+                    attach_money
+                    </span>
+                    <p class="amount-text">${itemsDisplay[i].amount}</p>
+            </div>
+            
+            <button id="delete" class="item-btn delete-btn">
+                <span class="material-symbols-outlined item-btn-icon">
+                    delete
+                    </span>
+            </button>
+
+        </div>
+       `
+
+       total += itemsDisplay[i].amount
+    }
     
-
-    total = total + Number(bill500.value)
-
+    paymentContainer.innerHTML = appData
     console.log(total)
-})
-bill200.addEventListener("keypress", () => {
-    console.log(bill200.value)
-})
-bill100.addEventListener("keypress", () => {
-    console.log(bill100.value)
-})
-bill50.addEventListener("keypress", () => {
-    console.log(bill50.value)
-})
-bill20.addEventListener("keypress", () => {
-    console.log(bill20.value)
-})
-bill10.addEventListener("keypress", () => {
-    console.log(bill10.value)
-})
-bill5.addEventListener("keypress", () => {
-    console.log(bill5.value)
-})
-bill2.addEventListener("keypress", () => {
-    console.log(bill2.value)
-})
-bill1.addEventListener("keypress", () => {
-    console.log(bill1.value)
-})
-documents.addEventListener("keypress", () => {
-    console.log(documents.value)
-})
 
+    addItemInput.value = ""
+    addContainer.classList.add("hide")
+    addContainer.classList.remove("show")
+})

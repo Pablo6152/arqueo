@@ -1,72 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arqueo</title>
+    <title>Herramientas</title>
 </head>
 <body>
+
+
+    <!-- Modal -->
+
+    <div class="add-container hide" id="add-container">
+
+        <div class="add-event" id="add-event-window">
+
+            <div class="dialogNavbar">
+
+                <button id="back-btn" class="back-btn dialog-btn">
+                    <span class="material-symbols-outlined dialog-icon">
+                        arrow_back
+                        </span>
+                </button>
+
+                <p class="add-title">Añadir pago</p>
+
+                <button id="done-btn" class="done-btn dialog-btn">
+                    <span class="material-symbols-outlined dialog-icon">
+                    done
+                    </span>
+
+                </button>
+                
+            </div>
+            
+            <div class="input-fields">
+
+                <div class="input-field">
+                    <input type="number" id="add-item-input" class="add-input input" min="1" max="100000">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-bar">
+       
+        <div class="btn-container">
+            <button id="action-menu" class="nav-btn">
+                <span class="material-symbols-outlined menu-btn-icon btn-icon">
+                    menu
+                </span>
+            </button>
+        </div>
+
+        <h1 id="section-title" class="section-title">Test</h1>
+
+        <div class="btn-container">
+
+            <button id="action-add" class="nav-btn add-btn">
+                <span class="material-symbols-outlined add-btn-icon btn-icon">
+                    add
+                </span>
+            </button>
+
+        </div>
+        
+    </div>
     
-<div class="app">
-    <div class="title-container" id="test">
-        <h1 class="title-text">Arqueo de remesas</h1>
-    </div>
+<div class="payments" id="payment-container">
 
-    <div class="type-section">
-        <label for="billete-500">Billete $500</label>
-        <input class="input input-color" type="number" name="billete-500" id="500">
-    </div>
-
-    <div class="type-section">
-        <label for="billete-200">Billete $200</label>
-        <input class="input input-color" type="number" name="billete-200" id="200">
-    </div>
-
-    <div class="type-section">
-        <label for="billete-100">Billete $100</label>
-        <input class="input input-color" type="number" name="billete-100" id="100">
-    </div>
-
-    <div class="type-section">
-        <label for="billete-50">Billete $50</label>
-        <input class="input input-color" type="number" name="billete-50" id="50">
-    </div>
-
-    <div class="type-section">
-        <label for="billete-20">Billete $20</label>
-        <input class="input input-color" type="number" name="billete-20" id="20">
-    </div>
-
-    <div class="type-section">
-        <label for="moneda-10">Moneda $10</label>
-        <input class="input input-color" type="number" name="moneda-10" id="10">
-    </div>
-
-    <div class="type-section">
-        <label for="moneda-5">Moneda $5</label>
-        <input class="input input-color" type="number" name="moneda-5" id="5">
-    </div>
-
-    <div class="type-section">
-        <label for="moneda-2">Moneda $2</label>
-        <input class="input input-color" type="number" name="moneda-2" id="2">
-    </div>
-
-    <div class="type-section">
-        <label for="moneda-1">Moneda $1</label>
-        <input class="input input-color" type="number" name="moneda-1" id="1">
-    </div>
-
-    <div class="type-section">
-        <label for="documentos">Documentos</label>
-        <input class="input input-color" type="number" name="documentos" id="documents">
-    </div>
-
-
+    
     
 </div>
 
