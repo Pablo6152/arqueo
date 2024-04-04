@@ -47,6 +47,25 @@ html, body{
 
 }
 
+.total-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    background-color: var(--secondary-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10%;
+}
+
+.amount{
+    font-size: 1.5rem;
+}
+
 .title-container{
     text-align: center;
 }
@@ -102,10 +121,9 @@ h1, h2, h3, p{
 .item-btn{
     background-color: var(--secondary-color);
     border: none;
-    font-size: 2em;
 }
 .item-btn-icon{
-    font-size: 1.2em;
+    font-size: 2em;
 }
 .edit-btn{
     color: seagreen;
