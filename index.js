@@ -1,10 +1,12 @@
+import { loadTheme, toggleTheme, themeBtn } from "./theme.js"
+
 const actionAdd = document.getElementById("action-add")
 const backBtn = document.getElementById("back-btn")
 const doneBtn = document.getElementById("done-btn")
 
 const paymentContainer = document.getElementById("payment-container")
 const totalContainer = document.getElementById("total-amount")
-const remainingContainer = document.getElementById("remaining-amount")
+const remainingAmount = document.getElementById("remaining-amount")
 const addContainer = document.getElementById("add-container")
 const addItem = document.getElementById("add-item")
 const addItemInput = document.getElementById("add-item-input")
@@ -33,6 +35,10 @@ doneBtn.addEventListener("click", () => {
     addContainer.classList.remove("show")
 })
 
+remainingAmount.addEventListener("click", () => {
+
+})
+
 function addToItemCollection(){
     payments.push(
         {
@@ -47,6 +53,7 @@ function addToItemCollection(){
 
 function saveItems(){
     localStorage.setItem("itemsArray", JSON.stringify(payments))
+    localStorage.setItem("fund", JSON.stringify(fund))
 }
 
     // Load items
@@ -148,9 +155,10 @@ function renderItems(){
     // Print items on screen
     paymentContainer.innerHTML = appData
     totalContainer.innerHTML = total.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-    remainingContainer.innerHTML = remaining.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    remainingAmount.innerHTML = remaining.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
     // Return input to a empty state
     addItemInput.value = ""
 }
 
+loadTheme()
 renderItems()

@@ -55,18 +55,24 @@ html, body{
     padding-left: 1em;
     padding-right: 1em;
 
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10%;
+    height: 7%;
 }
 
 .amount{
-    font-size: 1.5rem;
+   font-size: 1.5rem;
 }
 
+.total-amount{
+    color: var(--tertiary-accent-color);
+}
+.remaining-amount{
+    color: var(--secondary-accent-color);
+}
 .title-container{
     text-align: center;
 }
