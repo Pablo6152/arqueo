@@ -175,7 +175,7 @@ h1, h2, h3, p{
     display: flex;
     flex-direction: column;
 
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--text-color);
     /* border: 1px solid var(--primary-accent-color); */
     border-radius: 14px;
@@ -202,9 +202,11 @@ h1, h2, h3, p{
 }
 .back-btn{
     color: var(--primary-accent-color);
+    background-color: rgba(0, 0, 0, .001);
 }
 .done-btn{
     color: var(--secondary-accent-color);
+    background-color: rgba(0, 0, 0, .001);
 }
 
 /* Modal inputs */
@@ -216,8 +218,8 @@ h1, h2, h3, p{
 }
 .input{
 
-    background-color: #505050;
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     text-align: center;
 
     font-size: 2.5rem;
