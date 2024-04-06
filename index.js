@@ -13,6 +13,7 @@ const addItemInput = document.getElementById("add-item-input")
 let payments = []
 let paymentsBin = []
 let total = 0
+let remaining = 0
 let fund = 100000
 
 actionAdd.addEventListener("click", () => {
@@ -26,8 +27,13 @@ backBtn.addEventListener("click", () => {
 })
 
 doneBtn.addEventListener("click", () => {
-    total = 0
+    addToItemCollection()
 
+    addContainer.classList.add("hide")
+    addContainer.classList.remove("show")
+})
+
+function addToItemCollection(){
     payments.push(
         {
             amount: Number(addItemInput.value),
@@ -35,50 +41,14 @@ doneBtn.addEventListener("click", () => {
         }
     )
 
-    const itemsDisplay = payments
-
-    let appData = ""
-
-    for (let i = 0; i < itemsDisplay.length; i++) {
-        appData += `
-        <div class="item-container" id="${itemsDisplay[i].id}">
-
-            <span id="e" class="material-symbols-outlined item-btn edit-btn item-btn-icon">
-            edit
-            </span>
-
-            <div class="amount-container">
-                    <p class="amount-text">${itemsDisplay[i].amount.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</p>
-            </div>
-            
-            <span class="material-symbols-outlined item-btn delete-btn item-btn-icon" id="r">
-                delete
-            </span>
-
-        </div>
-       `
-    }
-    
     saveItems()
-
-    for (let i = 0; i < itemsDisplay.length; i++){
-        total += itemsDisplay[i].amount
-    }
-
-    paymentContainer.innerHTML = appData
-    totalContainer.innerHTML = total.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-
-    let remaining = fund - total
-    remainingContainer.innerHTML = remaining.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-
-    addItemInput.value = ""
-    addContainer.classList.add("hide")
-    addContainer.classList.remove("show")
-})
+    renderItems()
+}
 
 function saveItems(){
     localStorage.setItem("itemsArray", JSON.stringify(payments))
 }
+
     // Load items
 function loadItems(){
     let loadedData = []
@@ -88,7 +58,6 @@ function loadItems(){
         payments = JSON.parse(loadedData)
     }
 }
-
 
 paymentContainer.addEventListener("click", itemSelector)
 
@@ -130,35 +99,21 @@ function removeItem(itemId, origin){
                 payments[i].id--
             }
             
-
+            console.log(payments)
             saveItems()
             renderItems()
         }
 
-
-    // if (!isNaN(parseInt(itemId)) && origin == 1){
-    //         let paymentsBinBuffer = []
-    //         paymentsBinBuffer = favoritePayments.splice(parseInt(itemId), 1)
-            
-    //         // console.log(favoritePayments)
-            
-    //         for (let i = 0; i < paymentsBinBuffer.length; i++) {
-    //             paymentsBinBuffer[i].id = paymentsBin.length
-    //         }
-
-    //         paymentsBin.push(paymentsBinBuffer[0])
-    
-    //         for (let i = idSelected; i < favoritePayments.length; i++) { 
-    //             favoritePayments[i].id--
-    //         }
-    
-    // }
 }
 
-
+function calculateAmounts(){
+    remaining = fund - total
+}
 
 function renderItems(){
     loadItems()
+    total = 0
+    remaining = 0
 
     const itemsDisplay = payments
 
@@ -188,13 +143,14 @@ function renderItems(){
         total += itemsDisplay[i].amount
     }
 
+    calculateAmounts()
+
+    // Print items on screen
     paymentContainer.innerHTML = appData
     totalContainer.innerHTML = total.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-
-    let remaining = fund - total
     remainingContainer.innerHTML = remaining.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-
-    console.log(payments)
+    // Return input to a empty state
+    addItemInput.value = ""
 }
 
 renderItems()

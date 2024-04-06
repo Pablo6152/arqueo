@@ -37,7 +37,6 @@ html, body{
     height: 100%;
 }
 
-
 .payments{
     display: flex;
     flex-direction: column;
@@ -46,7 +45,7 @@ html, body{
     width: 80%;
 
     padding-bottom: 5em;
-
+    padding-top: 5em;
 }
 
 .total-container{
@@ -80,13 +79,16 @@ html, body{
     justify-content: space-between;
     align-items: center;
 
-    /* background-color: var(--secondary-color); */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: var(--primary-color);
     padding-top: 1em;
     padding-bottom: 1em;
 }
-/* .btn-container{
 
-} */
 .nav-btn{
     color: var(--text-color);
     
